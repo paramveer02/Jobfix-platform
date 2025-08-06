@@ -1,3 +1,5 @@
-export const HomeLayout = () => {
+const HomeLayout = () => {
   return <div>HomeLayout</div>;
 };
+
+export default HomeLayout;
