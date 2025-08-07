@@ -39,11 +39,6 @@ const Wrapper = styled.section`
     display: none;
   }
 
-  .logo {
-    height: 50px;
-    width: auto;
-  }
-
   btn {
     padding: 0.75 rem 1rem;
   }
