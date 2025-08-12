@@ -1,27 +1,37 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, redirect, useLoaderData } from "react-router-dom";
 import { BigSidebar, SmallSidebar, Navbar } from "../components";
 import Wrapper from "../assets/wrappers/Dashboard";
-import { useContext } from "react";
-import { DashboardContext } from "../context/DashboardContext";
+import customFetch from "../utils/customFetch";
+import DashboardContextProvider from "../context/DashboardContext";
 
-const Dashboard = () => {
-  const { user, isDarkTheme, showSideBar, toggleDarkTheme, toggleSideBar } =
-    useContext(DashboardContext);
+export const loader = async () => {
+  try {
+    const { data } = await customFetch.get("/users/current-user");
+    return data;
+  } catch (error) {
+    return redirect("/");
+  }
+};
+
+const DashboardLayout = () => {
+  const { user } = useLoaderData();
 
   return (
-    <Wrapper>
-      <main className="dashboard">
-        <SmallSidebar />
-        <BigSidebar />
-        <div>
-          <Navbar />
-          <div className="dashboard-page">
-            <Outlet />
+    <DashboardContextProvider initialUser={user}>
+      <Wrapper>
+        <main className="dashboard">
+          <SmallSidebar />
+          <BigSidebar />
+          <div>
+            <Navbar />
+            <div className="dashboard-page">
+              <Outlet context={{ user }} />
+            </div>
           </div>
-        </div>
-      </main>
-    </Wrapper>
+        </main>
+      </Wrapper>
+    </DashboardContextProvider>
   );
 };
 
-export default Dashboard;
+export default DashboardLayout;

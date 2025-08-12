@@ -1,12 +1,15 @@
 import { createContext, useState } from "react";
 import { checkDefaultTheme } from "../App";
+import { useNavigate } from "react-router-dom";
+import customFetch from "../utils/customFetch";
+import { toast } from "react-toastify";
 
 export const DashboardContext = createContext();
 
-const DashboardContextProvider = ({ children }) => {
-  // temp:
-  const user = { name: "Param" };
+const DashboardContextProvider = ({ children, initialUser }) => {
+  const navigate = useNavigate();
 
+  const [user, setUser] = useState(initialUser);
   const [showSideBar, setShowSideBar] = useState(false);
   const [isDarkTheme, setIsDarkTheme] = useState(checkDefaultTheme());
 
@@ -18,12 +21,16 @@ const DashboardContextProvider = ({ children }) => {
   };
 
   const toggleSideBar = () => {
-    console.log(`Show side bar: ${showSideBar}`);
     setShowSideBar((prev) => !prev);
   };
 
-  const logoutUser = () => {
-    console.log("Logged Out!");
+  const logoutUser = async () => {
+    try {
+      await customFetch.get("/auth/logout");
+    } catch {}
+    setUser(null);
+    toast.success("Logged Out Successfully");
+    navigate("/");
   };
 
   return (
