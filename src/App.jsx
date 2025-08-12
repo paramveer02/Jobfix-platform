@@ -12,6 +12,9 @@ import {
   Profile,
   Stats,
 } from "./pages";
+import { action as registerAction } from "./pages/Register";
+import { action as loginAction } from "./pages/Login";
+import { loader as dashboardLoader } from "./pages/DashboardLayout";
 
 export const checkDefaultTheme = () => {
   const isDarkTheme = localStorage.getItem("darkTheme") === "true";
@@ -32,14 +35,17 @@ const router = createBrowserRouter([
       {
         path: "register",
         element: <Register />,
+        action: registerAction,
       },
       {
         path: "login",
         element: <Login />,
+        action: loginAction,
       },
       {
         path: "dashboard",
         element: <DashboardLayout />,
+        loader: dashboardLoader,
         children: [
           { index: true, element: <AddJob /> },
           { path: "stats", element: <Stats /> },
@@ -53,6 +59,12 @@ const router = createBrowserRouter([
 ]);
 
 const App = () => {
-  return <RouterProvider router={router} />;
+  return (
+    <RouterProvider
+      router={router}
+      fallbackElement={<div style={{ padding: 16 }}>Loading…</div>}
+      hydrateFallbackElement={<div style={{ padding: 16 }}>Loading…</div>}
+    />
+  );
 };
 export default App;
