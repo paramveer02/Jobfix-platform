@@ -1,4 +1,4 @@
-export const FormRow = ({ labelText, type, name, defaultValue }) => {
+export const FormRow = ({ labelText, type, name, defaultValue, onChange }) => {
   return (
     <div className="form-row">
       <label htmlFor={name} className="form-label">
@@ -10,6 +10,7 @@ export const FormRow = ({ labelText, type, name, defaultValue }) => {
         name={name}
         className="form-input"
         defaultValue={defaultValue || ""}
+        onChange={onChange}
       />
     </div>
   );
