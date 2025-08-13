@@ -46,6 +46,10 @@ const Wrapper = styled.aside`
       transition: var(--transition);
     }
 
+    .pending {
+      background: var(--background-color);
+    }
+
     .icon {
       font-size: 1.5rem;
       margin-right: 1rem;
