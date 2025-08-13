@@ -11,11 +11,18 @@ import {
   AllJobs,
   Profile,
   Stats,
+  EditJob,
 } from "./pages";
 import { action as registerAction } from "./pages/Register";
 import { action as loginAction } from "./pages/Login";
 import { action as addJobAction } from "./pages/AddJob";
+import { action as EditJobAction } from "./pages/EditJob";
+import { action as DeleteJobAction } from "./pages/DeleteJob";
+
+import { loader as EditJobLoader } from "./pages/EditJob";
 import { loader as dashboardLoader } from "./pages/DashboardLayout";
+import { loader as allJobsLoader } from "./pages/AllJobs";
+import { loader as adminLoader } from "./pages/Admin";
 
 export const checkDefaultTheme = () => {
   const isDarkTheme = localStorage.getItem("darkTheme") === "true";
@@ -50,9 +57,20 @@ const router = createBrowserRouter([
         children: [
           { index: true, element: <AddJob />, action: addJobAction },
           { path: "stats", element: <Stats /> },
-          { path: "all-jobs", element: <AllJobs /> },
+          { path: "all-jobs", element: <AllJobs />, loader: allJobsLoader },
           { path: "profile", element: <Profile /> },
-          { path: "admin", element: <Admin /> },
+          { path: "admin", element: <Admin />, loader: adminLoader },
+          {
+            path: "edit-job/:id",
+            element: <EditJob />,
+            loader: EditJobLoader,
+            action: EditJobAction,
+          },
+          {
+            path: "delete-job/:id",
+            action: DeleteJobAction,
+            element: <span />,
+          },
         ],
       },
     ],
@@ -64,7 +82,7 @@ const App = () => {
     <RouterProvider
       router={router}
       fallbackElement={<div style={{ padding: 16 }}>Loading…</div>}
-      hydrateFallbackElement={<div style={{ padding: 16 }}>Loading…</div>}
+      hydrationFallbackElement={<div style={{ padding: 16 }}>Loading…</div>}
     />
   );
 };
