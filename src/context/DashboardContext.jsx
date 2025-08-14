@@ -3,6 +3,7 @@ import { checkDefaultTheme } from "../App";
 import { useNavigate } from "react-router-dom";
 import customFetch from "../utils/customFetch";
 import { toast } from "react-toastify";
+import { useEffect } from "react";
 
 export const DashboardContext = createContext();
 
@@ -12,6 +13,10 @@ const DashboardContextProvider = ({ children, initialUser }) => {
   const [user, setUser] = useState(initialUser);
   const [showSideBar, setShowSideBar] = useState(false);
   const [isDarkTheme, setIsDarkTheme] = useState(checkDefaultTheme());
+
+  useEffect(() => {
+    setUser(initialUser);
+  }, [initialUser]);
 
   const toggleDarkTheme = () => {
     const newDarkTheme = !isDarkTheme;
