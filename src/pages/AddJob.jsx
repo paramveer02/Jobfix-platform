@@ -1,10 +1,5 @@
-import {
-  Form,
-  redirect,
-  useNavigation,
-  useOutletContext,
-} from "react-router-dom";
-import { FormRow } from "../components";
+import { Form, redirect, useOutletContext } from "react-router-dom";
+import { FormRow, SubmitBtn } from "../components";
 import { FormRowSelect } from "../components";
 import Wrapper from "../assets/wrappers/AddJob";
 import { JOB_STATUS, JOB_TYPE } from "../../../jobfix-server/utils/constants";
@@ -27,8 +22,6 @@ export const action = async ({ request }) => {
 
 const AddJob = () => {
   const { user } = useOutletContext();
-  const navigate = useNavigation();
-  const isSubmitting = navigate.state === "submitting";
 
   return (
     <Wrapper>
@@ -57,13 +50,7 @@ const AddJob = () => {
             list={Object.values(JOB_TYPE)}
           />
 
-          <button
-            type="submit"
-            className="btn btn-block form-btn  "
-            disabled={isSubmitting}
-          >
-            {isSubmitting ? "submitting..." : "submit"}
-          </button>
+          <SubmitBtn formBtn />
         </div>
       </Form>
     </Wrapper>
