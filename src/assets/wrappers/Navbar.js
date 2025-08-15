@@ -32,6 +32,9 @@ const Wrapper = styled.nav`
     align-items: center;
   }
 
+  span {
+    color: var(--primary-500);
+  }
   .logo-text {
     display: none;
   }
