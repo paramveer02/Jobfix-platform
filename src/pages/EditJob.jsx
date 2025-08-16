@@ -2,7 +2,7 @@ import { Form, redirect, useLoaderData } from "react-router-dom";
 import customFetch from "../utils/customFetch";
 import { toast } from "react-toastify";
 import { FormRow, FormRowSelect, SubmitBtn } from "../components";
-import { JOB_STATUS, JOB_TYPE } from "../../../jobfix-server/utils/constants";
+import { JOB_TYPE, JOB_STATUS, JOB_SORT_BY } from "../utils/constants";
 import Wrapper from "../assets/wrappers/DashboardFormPage";
 
 export const loader = async ({ params }) => {

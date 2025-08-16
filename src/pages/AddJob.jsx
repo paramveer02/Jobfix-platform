@@ -2,7 +2,7 @@ import { Form, redirect, useOutletContext } from "react-router-dom";
 import { FormRow, SubmitBtn } from "../components";
 import { FormRowSelect } from "../components";
 import Wrapper from "../assets/wrappers/AddJob";
-import { JOB_STATUS, JOB_TYPE } from "../../../jobfix-server/utils/constants";
+import { JOB_TYPE, JOB_STATUS, JOB_SORT_BY } from "../utils/constants";
 import customFetch from "../utils/customFetch";
 import { toast } from "react-toastify";
 
