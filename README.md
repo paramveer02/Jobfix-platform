@@ -7,10 +7,6 @@
 
 > A clean, fast front-end for tracking job applications with stats, filters, and a slick UI.
 
-<p align="center">
-  <img src="./public/favicon.ico" alt="JobFix Banner" width="900" />
-</p>
-
 **Live App:** https://jobfix.onrender.com  
 **API:** https://jobfix-server.onrender.com
 
