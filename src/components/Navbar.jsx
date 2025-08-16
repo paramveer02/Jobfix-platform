@@ -7,7 +7,7 @@ import LogoutContainer from "./LogoutContainer";
 import ThemeToggle from "./Themetoggle";
 
 const Navbar = () => {
-  const { user, showSideBar, toggleSideBar } = useContext(DashboardContext);
+  const { toggleSideBar } = useContext(DashboardContext);
 
   return (
     <Wrapper>
@@ -17,7 +17,9 @@ const Navbar = () => {
         </button>
         <div>
           <Logo />
-          <h4 className="logo-text">Dashboard</h4>
+          <h4 className="logo-text">
+            My Job <span>Tracker</span>
+          </h4>
         </div>
         <div className="btn-container">
           <ThemeToggle />
