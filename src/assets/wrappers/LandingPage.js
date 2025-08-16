@@ -31,6 +31,14 @@ const Wrapper = styled.section`
     max-width: 35em;
   }
 
+  p .accent,
+  p a.accent {
+    color: var(--primary-500);
+    font-weight: 600;
+    text-decoration: none; /* no link underline */
+    border-bottom: none; /* remove the accent underline */
+  }
+
   .register-link {
     margin-right: 1rem;
   }
