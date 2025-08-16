@@ -4,7 +4,7 @@ import Logo from "./Logo";
 import { useContext } from "react";
 import { DashboardContext } from "../context/DashboardContext";
 import LogoutContainer from "./LogoutContainer";
-import ThemeToggle from "./Themetoggle.jsx";
+import ThemeToggle from "./ThemeToggle.jsx";
 
 const Navbar = () => {
   const { toggleSideBar } = useContext(DashboardContext);
