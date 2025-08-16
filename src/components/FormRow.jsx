@@ -1,19 +1,26 @@
-export const FormRow = ({ labelText, type, name, defaultValue, onChange }) => {
+// components/FormRow.jsx
+export default function FormRow({
+  type = "text",
+  name,
+  labelText,
+  defaultValue = "",
+  onChange,
+  ...rest
+}) {
   return (
     <div className="form-row">
       <label htmlFor={name} className="form-label">
         {labelText || name}
       </label>
       <input
-        type={type}
         id={name}
         name={name}
-        className="form-input"
-        defaultValue={defaultValue || ""}
+        type={type}
+        defaultValue={defaultValue}
         onChange={onChange}
+        className="form-input"
+        {...rest}
       />
     </div>
   );
-};
-
-export default FormRow;
+}

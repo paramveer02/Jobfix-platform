@@ -1,26 +1,34 @@
+// components/JobsContainer.jsx
 import Wrapper from "../assets/wrappers/JobsContainer";
-import { UseAllJobsContext } from "../pages/AllJobs";
+import PageBtnContainer from "../components/PageBtnContainer";
+import { useAllJobsContext } from "../pages/AllJobs";
 import Job from "./Job";
 
 const JobsContainer = () => {
-  const { data } = UseAllJobsContext();
-  const { jobs } = data;
+  const { data } = useAllJobsContext();
+  const { jobs, totalJobs, numOfPages, page } = data;
 
-  if (jobs.length === 0) {
+  if (!jobs || jobs.length === 0) {
     return (
       <Wrapper>
-        <h2>No Jobs to display...</h2>
+        <h2>No jobs to display...</h2>
       </Wrapper>
     );
   }
 
   return (
     <Wrapper>
+      <h5>
+        {totalJobs} job{totalJobs === 1 ? "" : "s"} found
+      </h5>
       <div className="jobs">
-        {jobs.map((job) => {
-          return <Job key={job._id} {...job} />;
-        })}
+        {jobs.map((job) => (
+          <Job key={job._id} {...job} />
+        ))}
       </div>
+      {numOfPages > 1 && (
+        <PageBtnContainer currentPage={page} total={numOfPages} />
+      )}
     </Wrapper>
   );
 };
