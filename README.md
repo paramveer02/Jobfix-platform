@@ -1,12 +1,48 @@
-# React + Vite
+# JobFix — Client (React + Vite)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![React](https://img.shields.io/badge/React-19-61dafb?logo=react&logoColor=061a23)](https://react.dev/)
+[![Vite](https://img.shields.io/badge/Vite-7-646cff?logo=vite&logoColor=fff)](https://vitejs.dev/)
+[![Recharts](https://img.shields.io/badge/Charts-Recharts-00bcd4)](https://recharts.org/)
+[![Render](https://img.shields.io/badge/Hosted%20on-Render-46e3b7?logo=render&logoColor=fff)](https://render.com/)
 
-Currently, two official plugins are available:
+> A clean, fast front-end for tracking job applications with stats, filters, and a slick UI.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<p align="center">
+  <img src="./public/og-banner.png" alt="JobFix Banner" width="900" />
+</p>
 
-## Expanding the ESLint configuration
+**Live App:** https://jobfix.onrender.com  
+**API:** https://jobfix-server.onrender.com
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## Features
+
+- 🔐 Auth flows (register, login, demo user)
+- 🧰 Job CRUD (create / edit / delete)
+- 🧭 Search & filters (status, type, etc.)
+- 📈 Stats dashboard (monthly trends, bar/area charts)
+- 👤 Profile (avatar upload via Cloudinary, update name/location)
+- 🍪 Cookie-based auth (secure & HttpOnly in production)
+
+---
+
+## Tech Stack
+
+- **React 19**, **Vite 7**
+- **React Router** (data routers + loaders/actions)
+- **Axios** (pre-configured instance with `withCredentials`)
+- **Styled-Components**, **React Icons**
+- **Recharts** for analytics
+
+---
+
+## Getting Started
+
+### 1) Env
+
+Create `.env.local` in the project root:
+
+```env
+VITE_API_URL=https://jobfix-server.onrender.com
+```
