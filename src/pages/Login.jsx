@@ -21,8 +21,6 @@ export const action = async ({ request }) => {
   const data = Object.fromEntries(formData);
 
   try {
-    // no setLoading here; actions can't touch component state
-    // no artificial delay either
     await customFetch.post("/auth/login", data);
     toast.success("Successfully logged in");
     return redirect("/dashboard");
