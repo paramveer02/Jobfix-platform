@@ -63,15 +63,32 @@ const Login = () => {
     <>
       {/* Overlay (shows during form submit or demo login) */}
       {showOverlay && (
-        <div className="fixed inset-0 z-50 grid place-items-center bg-slate-950/70 backdrop-blur-sm">
-          <div className="flex flex-col items-center">
+        <div
+          style={{
+            position: "fixed",
+            inset: 0,
+            zIndex: 9999,
+            display: "grid",
+            placeItems: "center",
+            background: "rgba(2,6,23,0.7)",
+            backdropFilter: "blur(4px)",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              color: "#f1f5f9",
+            }}
+          >
             <DotLottieReact
               src={loaderUrl}
               autoplay
               loop
               style={{ width: 160, height: 160 }}
             />
-            <p className="mt-3 text-slate-100">Let’s fix some jobs today…</p>
+            <p style={{ marginTop: 12 }}>Let’s fix some jobs today…</p>
           </div>
         </div>
       )}
